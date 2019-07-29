@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import ShoppingForm from './ShoppingForm';
+import ShoppingForm from '../ShoppingForm';
 
 class ShoppingList extends Component  {
   constructor(props){
@@ -11,6 +11,13 @@ class ShoppingList extends Component  {
       ]
     }
   }
+
+  addItem = (item) => {
+    this.setState(prevState => ({
+      items: [...prevState.items, item]
+    }));  
+  }
+  
   render() {
     return (
       <div className="ShoppingList">
@@ -20,7 +27,7 @@ class ShoppingList extends Component  {
           </div>
         ))}
 
-        {/* <ShoppingForm /> */}
+        <ShoppingForm addItem={this.addItem}/>
       </div>
     )
   }
