@@ -5,13 +5,17 @@ class ShoppingForm extends Component {
     super(props);
     this.state = {
       name: '',
-      quantity: ''
+      qty: ''
     }
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.addItem(this.state);
+    this.setState({
+      name: '',
+      qty: ''
+    })
   }
 
   handleChange = (event) => {
@@ -30,14 +34,16 @@ class ShoppingForm extends Component {
           onChange={this.handleChange}
           id="name"
           name="name"
+          value={this.state.name}
         />
-        <label htmlFor="qty">Quantity</label>
+        <label htmlFor="quantity">Quantity</label>
         <input
           type="text"
           placeholder="15"
           onChange={this.handleChange}
           id="quantity"
           name="qty"
+          value={this.state.qty}
         />
         <button>Add Item</button>
       </form>
